@@ -1,0 +1,33 @@
+name: safira
+version: 0.0.1-alpha
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  youtube_explode_dart: ^1.10.8
+  just_audio: ^0.9.18
+  cupertino_icons: ^1.0.4
+  get: ^4.6.1
+  just_audio_background: ^0.0.1-beta.4
+  spotify: ^0.7.0
+  audio_session: ^0.1.6+1
+  audio_service: ^0.18.1
+  get_storage: ^2.0.3
+  path_provider: ^2.0.7
+  flutter_svg: ^1.0.3
+  queue: ^3.1.0+1
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
