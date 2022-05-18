@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 class CoverAsset {
   late File file;
   CoverAsset() {
-    getTemporaryDirectory().then((dir) => file = File(dir.path + '/cover'));
+    getTemporaryDirectory().then((dir) => file = File('${dir.path}/cover'));
   }
 
   Future<File> getFile(String path) async {

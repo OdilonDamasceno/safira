@@ -13,8 +13,8 @@ class YoutubeProvider {
     return manifest.audioOnly.withHighestBitrate();
   }
 
-  Future<SearchList> search(String query) async {
-    return await _youtubeExplode.search.getVideos(query);
+  Future<VideoSearchList> search(String query) async {
+    return await _youtubeExplode.search.search(query);
   }
 
   Future<Video> topSearchResult(String query) async {
@@ -29,7 +29,7 @@ class YoutubeProvider {
     Video searched = await topSearchResult(
       '${track.title} - ${track.artistCredit?.map((artist) => artist.name).join(" ")}',
     );
-    StreamManifest _manifest = await getManifest(searched.id.value);
-    return await getAudioUrl(_manifest);
+    StreamManifest manifest = await getManifest(searched.id.value);
+    return await getAudioUrl(manifest);
   }
 }

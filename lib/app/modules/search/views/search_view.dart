@@ -237,7 +237,7 @@ class SearchView extends GetView<SearchController> {
                             maxCrossAxisExtent: 200,
                           ),
                           itemBuilder: (context, index) {
-                            var _artist = (snapshot.data as ArtistQuery?)
+                            var artist = (snapshot.data as ArtistQuery?)
                                 ?.artists?[index];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -249,7 +249,7 @@ class SearchView extends GetView<SearchController> {
                                   ),
                                 ),
                                 Text(
-                                  '${_artist?.name}',
+                                  '${artist?.name}',
                                   textAlign: TextAlign.center,
                                 ),
                               ],

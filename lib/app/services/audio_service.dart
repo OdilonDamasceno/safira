@@ -41,7 +41,7 @@ class SafiraAudioService extends GetxController {
 
   final Rx<Duration> _bufferedPosition = Duration(milliseconds: 0).obs;
 
-  final Rx<MediaItem>? _currentMusicMetadata = MediaItem(id: '', title: '').obs;
+  final Rx<MediaItem> _currentMusicMetadata = MediaItem(id: '', title: '').obs;
 
   final Rx<LoopMode> loopMode = LoopMode.off.obs;
 
@@ -204,7 +204,7 @@ class SafiraAudioService extends GetxController {
   void _listenIsLastMusic() {
     _audioPlayer.sequenceStateStream.listen((state) {
       if (state?.currentSource != null) {
-        _currentMusicMetadata!(state?.currentSource?.tag as MediaItem);
+        _currentMusicMetadata(state?.currentSource?.tag as MediaItem);
       }
 
       _hasPrevious(_audioPlayer.previousIndex == null);
@@ -246,16 +246,16 @@ class SafiraAudioService extends GetxController {
   void _listenPlaylistChanges() {
     _playlist.listen((source) {
       var queue = source.children.map((audio) {
-        var _audioSource = (audio.sequence[0] as UriAudioSource);
+        var audioSource = (audio.sequence[0] as UriAudioSource);
 
         return <String, dynamic>{
-          'url': _audioSource.uri.toString(),
+          'url': audioSource.uri.toString(),
           'tag': {
-            'id': _audioSource.tag.id.toString(),
-            'title': _audioSource.tag.title.toString(),
-            'album': _audioSource.tag.album.toString(),
-            'artist': _audioSource.tag.artist.toString(),
-            'artUri': _audioSource.tag.artUri.toString(),
+            'id': audioSource.tag.id.toString(),
+            'title': audioSource.tag.title.toString(),
+            'album': audioSource.tag.album.toString(),
+            'artist': audioSource.tag.artist.toString(),
+            'artUri': audioSource.tag.artUri.toString(),
           }
         };
       }).toList();
